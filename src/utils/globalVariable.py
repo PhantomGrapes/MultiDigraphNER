@@ -1,0 +1,4 @@
+class GLOBAL_VARIABLE:
+    PRINT_PARAMS = False
+    DEFAULT_GPU = None
+    DISABLE_TQDM = True

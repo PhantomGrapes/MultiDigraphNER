@@ -1,0 +1,111 @@
+mode: 'train'
+use_gpu: false
+use_dev: true
+log_folder: "log"
+gpu_num: [0]
+
+data:
+  data_base_path: 'data/ecommerce'
+  word_threshold: 0
+  use_normalized_word: true
+  word_embedding: 'data/embeddings/char.vec200.demo'
+  bigram_embedding: 'data/embeddings/bichar.vec200.demo'
+  keep_labels: []
+
+  PAD_ID: 0
+  UNK_ID: 1
+  TAG_START_ID: -2
+  TAG_EOS_ID: -1
+
+model:
+  model_type: 'graph'
+  drop_out: 0.5
+  base_path: "model"
+  model_name: "graph_ecommerce"
+  word_embedding_dim: 200
+  use_char: false
+  char_dim: 50
+  use_bigram: true
+  bigram_dim: 200
+  rnn_hidden_size: 600
+  use_birnn: true
+  rnn_num_layers: 2
+  rnn_type: "lstm"
+  activation: "none"
+  load_from_pretrain: false
+
+  graph_emb:
+    n_steps: 2
+    use_rnn: true
+    state_dim: 300
+    prop_type: 'gru'
+    batch_normalization: false
+    gru_svd: false
+    svd_delta: 1.3
+    attention: false
+    n_layer: 1
+    build_main: 'trival'
+    gazetter:
+# comment these gazetteers below to run trivial GraphNER
+#     product1:
+#       path: 'data/dics/product1.dic'
+#       emb_dim: 50
+#       method: 'abnode'
+#       space: ''
+#       match_ignore_case: True
+#     product2:
+#       path: 'data/dics/product2.dic'
+#       emb_dim: 50
+#       method: 'abnode'
+#       space: ''
+#       match_ignore_case: True
+#     product3:
+#       path: 'data/dics/product3.dic'
+#       emb_dim: 50
+#       method: 'abnode'
+#       space: ''
+#       match_ignore_case: True
+#     brand1:
+#       path: 'data/dics/brand1.dic'
+#       emb_dim: 50
+#       method: 'abnode'
+#       space: ''
+#       match_ignore_case: True
+#     brand2:
+#       path: 'data/dics/brand2.dic'
+#       emb_dim: 50
+#       method: 'abnode'
+#       space: ''
+#       match_ignore_case: True
+#     brand3:
+#       path: 'data/dics/brand3.dic'
+#       emb_dim: 50
+#       method: 'abnode'
+#       space: ''
+#       match_ignore_case: True
+#     brand4:
+#       path: 'data/dics/brand4.dic'
+#       emb_dim: 50
+#       method: 'abnode'
+#       space: ''
+#       match_ignore_case: True
+
+train:
+  epoch: 100
+  batch_size: 10
+  optimizer: 'sgd'
+  learning_rate: 0.001
+  lr_decay: 0.05
+  momentum: 0
+  l2: 1e-8
+  report_frequence: 100000
+  dev_epoch_frequence: 1
+  rnn_hidden_initalization: "none"
+  transition_matrix_initalization: "randn"
+  shuffle_num: 1
+  clip: 5
+  seed: 42
+
+eval:
+  do_eval: true
+  use_dict_force: false

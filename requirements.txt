@@ -1,0 +1,5 @@
+tqdm==4.31.1
+numpy==1.15.4
+dill==0.2.9
+torch==0.4.1
+hb_config==0.5.1
