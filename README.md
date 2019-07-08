@@ -7,7 +7,9 @@ Python 3.6, Pytorch >= 0.4, hb-config, dill, tqdm, numpy (or using pip -r requir
 
 ## Usage
 python -m src.main --config graph_ecommerce
+
 turn on/off the gpu mode in config/graph_ecommerce.yml
+
 remove gazetteers in config/graph_ecommerce.yml to run trivial GraphNER
 
 
