@@ -10,7 +10,7 @@ python -m src.main --config graph_ecommerce
 
 turn on/off the gpu mode in config/graph_ecommerce.yml
 
-remove gazetteers in config/graph_ecommerce.yml to run trivial GraphNER
+remove gazetteers in config/graph_ecommerce.yml to run trivial model (our model - gazetteers = bilstm crf)
 
 
 To reproduce results in paper, you need to retrain and replace demo embeddings in data/embeddings (including char embedding and bichar embedding trained on Chinese wiki)
