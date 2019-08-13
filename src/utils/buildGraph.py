@@ -5,7 +5,7 @@ def buildMainTrival(tokens):
     edges = [[], []]
     for i in range(seqLen):
         if i > 0:
-            edges[0].append([seq2node[i-1], seq2node[i], 1])
+            edges[0].append([seq2node[i], seq2node[i-1], 1])
         if i < seqLen - 1:
             edges[1].append([seq2node[i], seq2node[i+1], 1])
     return seqLen, node2seq, seq2node, edges
